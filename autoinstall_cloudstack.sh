@@ -177,6 +177,9 @@ RQUOTAD_PORT=875
 STATD_PORT=662
 STATD_OUTGOING_PORT=2020" >> /etc/sysconfig/nfs
 
+    INPUT_DOMAIN_NAME=`hostname -d`
+    sed -i "/^\#Domain/a Domain = $INPUT_DOMAIN_NAME" /etc/idmapd.conf
+
     INPUT_SECTION_LINE=`cat -n /etc/sysconfig/iptables | egrep -- '-A INPUT' | head -1 | awk '{print $1}'`
 
     head -`expr $INPUT_SECTION_LINE - 1` /etc/sysconfig/iptables > /tmp/before
