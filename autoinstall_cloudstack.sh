@@ -51,6 +51,9 @@ gpgcheck=0" > /etc/yum.repos.d/CloudStack.repo
 }
 
 function install_management() {
+    sed -i "/^HOSTNAME/c HOSTNAME=csman.cloudstack.local" /etc/sysconfig/network
+    hostname csman.cloudstack.local
+
     yum install cloudstack-management mysql-server expect -y
 
     head -7 /etc/my.cnf > /tmp/before
