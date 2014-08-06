@@ -22,9 +22,12 @@ function get_network_info() {
 
 function get_nfs_info() {
     echo '* settings for nfs server'
-    read -p ' NFS Server IP: ' NFS_SERVER_IP
-    read -p ' Primary mount point   (ex:/export/primary)  : ' NFS_SERVER_PRIMARY
-    read -p ' Secondary mount point (ex:/export/secondary): ' NFS_SERVER_SECONDARY
+#    read -p ' NFS Server IP: ' NFS_SERVER_IP
+#    read -p ' Primary mount point   (ex:/export/primary)  : ' NFS_SERVER_PRIMARY
+#    read -p ' Secondary mount point (ex:/export/secondary): ' NFS_SERVER_SECONDARY
+NFS_SERVER_IP=`ifconfig eth0 | grep "inet addr" | awk '{print $2}' | sed 's/addr://'`
+NFS_SERVER_PRIMARY=/export/primary
+NFS_SERVER_SECONDARY=/export/secondary
 }
 
 function get_nfs_network() {
