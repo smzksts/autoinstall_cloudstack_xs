@@ -103,20 +103,23 @@ function initialize_storage() {
     chkconfig rpcbind on
     service nfs start
     chkconfig nfs on
-    mkdir -p /mnt/primary
-    mkdir -p /mnt/secondary
-    mount -t nfs ${NFS_SERVER_IP}:${NFS_SERVER_PRIMARY} /mnt/primary
-    sleep 10
-    mount -t nfs ${NFS_SERVER_IP}:${NFS_SERVER_SECONDARY} /mnt/secondary
-    sleep 10
-    rm -rf /mnt/primary/*
-    rm -rf /mnt/secondary/*
-    /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt -m /mnt/secondary -u http://cloudstack.apt-get.eu/systemvm/4.4/systemvm64template-4.4.0-6-xen.vhd.bz2 -h xenserver -F
+#    mkdir -p /mnt/primary
+#    mkdir -p /mnt/secondary
+#    mount -t nfs ${NFS_SERVER_IP}:${NFS_SERVER_PRIMARY} /mnt/primary
+#    sleep 10
+#    mount -t nfs ${NFS_SERVER_IP}:${NFS_SERVER_SECONDARY} /mnt/secondary
+#    sleep 10
+#    rm -rf /mnt/primary/*
+#    rm -rf /mnt/secondary/*
+    rm -rf /export/primary/*
+    rm -rf /export/secondary/*
+#    /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt -m /mnt/secondary -u http://cloudstack.apt-get.eu/systemvm/4.4/systemvm64template-4.4.0-6-xen.vhd.bz2 -h xenserver -F
+    /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt -m /export/secondary -u http://cloudstack.apt-get.eu/systemvm/4.4/systemvm64template-4.4.0-6-xen.vhd.bz2 -h xenserver -F
     sync
-    umount /mnt/primary
-    umount /mnt/secondary
-    rmdir /mnt/primary
-    rmdir /mnt/secondary
+#    umount /mnt/primary
+#    umount /mnt/secondary
+#    rmdir /mnt/primary
+#    rmdir /mnt/secondary
 }
 
 function install_agent() {
