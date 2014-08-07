@@ -1,7 +1,7 @@
 * What is this?
 
-  This is an easy installation script for CloudStack 4.x.
-  This script automates installation on a fresh CentOS 6.x node by using minimal netinstall.
+  This is an easy installation script for CloudStack 4.4 on XenServer.
+  This script automates installation on a fresh CentOS 6.4 node by using minimal netinstall.
   All you have to do is running this script with options '-canm'.
   After a while you will see welcome message on the CloudStack web UI.
 
