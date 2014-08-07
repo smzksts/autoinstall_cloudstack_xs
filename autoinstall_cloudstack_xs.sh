@@ -32,7 +32,7 @@ NFS_SERVER_SECONDARY=/export/secondary
 
 function get_nfs_network() {
     echo '* settings for nfs server'
-    read -p ' accept access from (ex:192.168.1.0/24): ' NETWORK
+    read -p ' Accept NFS Client access from (ex:192.168.1.0/24): ' NETWORK
 }
 
 function install_common() {
